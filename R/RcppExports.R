@@ -148,3 +148,23 @@ naiveBayesClassifier <- function(train, labels, classes, test = NULL) {
     .Call(`_RcppMLPACK_naiveBayesClassifier`, train, labels, classes, test)
 }
 
+#' Run a dbscan clustering analysis
+#'
+#' DBSCAN clustering on the data, returning number of clusters, 
+#' the centroid of each cluster and also the list of cluster assignments.
+#'
+#' @title Run a DBSCAN clustering analysis
+#' @param data A matrix of data values
+#' @return assignments	Vector to store cluster assignments
+#' @return centroids Matrix in which centroids are stored
+#' @examples
+#' x <- rbind(matrix(rnorm(100, sd = 0.3), ncol = 2),
+#'            matrix(rnorm(100, mean = 1, sd = 0.3), ncol = 2))
+#' colnames(x) <- c("x", "y")
+#' cl <- dbscan(x)
+#'
+#' data(trees, package="datasets")
+#' cl2 <- dbscan(t(trees))
+dbscan <- function(data) {
+    .Call(`_RcppMLPACK_dbscan`, data)
+}

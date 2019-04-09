@@ -89,6 +89,18 @@ BEGIN_RCPP
 END_RCPP
 }
 
+// dbscan
+Rcpp::List dbscan(const arma::mat& data);
+RcppExport SEXP _RcppMLPACK_dbscan(SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(dbscan(data));
+    return rcpp_result_gen;
+END_RCPP
+}
+
 static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_coverTreeNeighbor", (DL_FUNC) &_RcppMLPACK_coverTreeNeighbor, 2},
     {"_RcppMLPACK_kMeans", (DL_FUNC) &_RcppMLPACK_kMeans, 2},
@@ -96,6 +108,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RcppMLPACK_linearRegression", (DL_FUNC) &_RcppMLPACK_linearRegression, 4},
     {"_RcppMLPACK_logisticRegression", (DL_FUNC) &_RcppMLPACK_logisticRegression, 3},
     {"_RcppMLPACK_naiveBayesClassifier", (DL_FUNC) &_RcppMLPACK_naiveBayesClassifier, 4},
+    {"_RcppMLPACK_dbscan", (DL_FUNC) &_RcppMLPACK_dbscan, 1},
     {NULL, NULL, 0}
 };
 
